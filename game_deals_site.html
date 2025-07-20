@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Deals Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 1rem;
+      background-color: #282828;
+    }
+    #games-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      padding: 1rem;
+    }
+    .game {
+      background-color: #2a2a2a;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.4);
+    }
+    .title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .platform {
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    .price {
+      margin-top: 0.5rem;
+    }
+    .old-price {
+      color: gray;
+      text-decoration: line-through;
+      opacity: 0.5;
+      margin-right: 0.5rem;
+    }
+    .new-price {
+      color: #ff4e4e;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎮 Game Deals</h1>
+    <p>Follow the best game discounts from your favorite platforms</p>
+  </header>
+  <main>
+    <section id="games-list">
+      <div class="game">
+        <div class="title">GTA V</div>
+        <div class="platform">Steam</div>
+        <div class="price">
+          <span class="old-price">$29.99</span>
+          <span class="new-price">$14.99</span>
+        </div>
+      </div>
+      <div class="game">
+        <div class="title">Satisfactory</div>
+        <div class="platform">Epic Games</div>
+        <div class="price">
+          <span class="old-price">$24.99</span>
+          <span class="new-price">$9.99</span>
+        </div>
+      </div>
+      <div class="game">
+        <div class="title">Rust</div>
+        <div class="platform">Steam</div>
+        <div class="price">
+          <span class="old-price">$39.99</span>
+          <span class="new-price">$19.99</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>Made with ❤️ by Nicat</p>
+  </footer>
+</body>
+</html>
