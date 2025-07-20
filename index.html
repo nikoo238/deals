@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>Game List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
       background: #111;
@@ -25,6 +26,10 @@
       border-radius: 6px;
       cursor: pointer;
       transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 250px;
     }
     .game:hover {
       background: #333;
@@ -32,6 +37,23 @@
     a {
       color: white;
       text-decoration: none;
+      flex: 1;
+    }
+    button {
+      background: transparent;
+      color: gold;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    /* Mobil uyumluluk */
+    @media (max-width: 600px) {
+      .game {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   </style>
 </head>
@@ -50,13 +72,39 @@
       "Lego Star Wars: The Skywalker Saga"
     ];
 
-    const list = document.getElementById("gameList");
+    const gameList = document.getElementById("gameList");
+    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+    function toggleFavorite(title, btn) {
+      const index = favorites.indexOf(title);
+      if (index >= 0) {
+        favorites.splice(index, 1);
+        btn.innerText = "☆";
+      } else {
+        favorites.push(title);
+        btn.innerText = "★";
+      }
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
 
     games.forEach(title => {
+      const wrapper = document.createElement("div");
+      wrapper.className = "game";
+
       const link = document.createElement("a");
       link.href = `details.html?title=${encodeURIComponent(title)}`;
-      link.innerHTML = `<div class="game">${title}</div>`;
-      list.appendChild(link);
+      link.innerText = title;
+
+      const favBtn = document.createElement("button");
+      favBtn.innerText = favorites.includes(title) ? "★" : "☆";
+      favBtn.onclick = (e) => {
+        e.preventDefault();
+        toggleFavorite(title, favBtn);
+      };
+
+      wrapper.appendChild(link);
+      wrapper.appendChild(favBtn);
+      gameList.appendChild(wrapper);
     });
   </script>
 </body>
