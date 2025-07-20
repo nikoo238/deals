@@ -4,7 +4,7 @@ const apiURL = "https://www.cheapshark.com/api/1.0/games?title=";
 const gamesToTrack = ["GTA V", "Rust", "Satisfactory"];
 const storeNames = {
   1: "Steam",
-  25: "Epic Games Store"
+  25: "Epic Games"
 };
 
 async function fetchBestDeals() {
