@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Game Details</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    .game-card {
+      background: #222;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 500px;
+      margin: auto;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 4px;
+    }
+    .price {
+      margin-top: 10px;
+      font-size: 1.2em;
+    }
+    .old {
+      text-decoration: line-through;
+      color: gray;
+      margin-right: 10px;
+    }
+    .new {
+      color: #ff5252;
+    }
+    .discount {
+      margin-top: 5px;
+      font-size: 1em;
+      color: #00e676;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-card" id="details">Loading...</div>
+
+  <script>
+    const proxyURL = "https://api.allorigins.win/raw?url=";
+    const params = new URLSearchParams(window.location.search);
+    const title = params.get("title");
+    const storeNames = { 1: "Steam", 25: "Epic Games Store" };
+
+    async function fetchGame(title) {
+      try {
+        const res = await fetch(proxyURL + encodeURIComponent(`https://www.cheapshark.com/api/1.0/games?title=${title}`));
+        const games = await res.json();
+        if (!games || games.length === 0) return null;
+
+        const gameID = games[0].gameID;
+        const detailRes = await fetch(proxyURL + encodeURIComponent(`https://www.cheapshark.com/api/1.0/games?id=${gameID}`));
+        const gameData = await detailRes.json();
+
+        let bestDeal = gameData.deals[0];
+        for (const deal of gameData.deals) {
+          if (parseFloat(deal.price) < parseFloat(bestDeal.price)) {
+            bestDeal = deal;
+          } else if (deal.price === bestDeal.price && deal.storeID === "25") {
+            bestDeal = deal;
+          }
+        }
+
+        const discountPercent = Math.round((1 - bestDeal.price / bestDeal.retailPrice) * 100);
+
+        return {
+          title: gameData.info.title,
+          thumb: gameData.info.thumb,
+          store: storeNames[bestDeal.storeID] || "Unknown Store",
+          price: bestDeal.price,
+          retail: bestDeal.retailPrice,
+          discount: discountPercent,
+          dealID: bestDeal.dealID
+        };
+      } catch (err) {
+        console.error(err);
+        return null;
+      }
+    }
+
+    (async () => {
+      const container = document.getElementById("details");
+      const data = await fetchGame(title);
+
+      if (!data) {
+        container.innerHTML = "<p>Game not found.</p>";
+        return;
+      }
+
+      container.innerHTML = `
+        <h2>${data.title}</h2>
+        <img src="${data.thumb}" alt="${data.title}">
+        <div class="price">
+          <span class="old">$${parseFloat(data.retail).toFixed(2)}</span>
+          <span class="new">$${parseFloat(data.price).toFixed(2)}</span>
+        </div>
+        <div class="discount">💸 ${data.discount}% OFF on ${data.store}</div>
+        <p><a href="https://www.cheapshark.com/redirect?dealID=${data.dealID}" target="_blank">🔗 Go to Deal</a></p>
+      `;
+    })();
+  </script>
+</body>
+</html>
