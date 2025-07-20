@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>D E A L S</title>
+  <title>Game Deals</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #1a4526;
+      background-color: #1e1e1e;
       color: #f0f0f0;
       margin: 0;
       padding: 0;
@@ -15,7 +15,20 @@
     header {
       text-align: center;
       padding: 1rem;
-      background-color: #1e5c30;
+      background-color: #282828;
+    }
+    #controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      padding: 1rem;
+    }
+    #searchInput, #priceFilter {
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
     }
     #games-list {
       display: grid;
@@ -55,17 +68,25 @@
 </head>
 <body>
   <header>
-    <h1>🎮 Oyun təklifləri</h1>
-    <p>150+ oyun səni gözləyir..</p>
+    <h1>🎮 Game Deals</h1>
+    <p>Find the best price from Steam or Epic Games</p>
   </header>
+
+  <div id="controls">
+    <input type="text" id="searchInput" placeholder="Search game name..." />
+    <input type="number" id="priceFilter" placeholder="Max price ($)" min="0" />
+  </div>
+
   <main>
     <section id="games-list">
       <!-- Game deals will be added here -->
     </section>
   </main>
-  <footer style="text-align:center; padding:1rem;">
-    <p>Made by nikoo238</p>
+
+  <footer style="text-align:center; padding:1rem; background-color:#282828;">
+    <p>Made with ❤️ by Nikoo</p>
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
