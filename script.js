@@ -61,7 +61,12 @@ async function fetchBestDeals() {
       const gameCard = document.createElement("div");
       gameCard.className = "game";
       gameCard.innerHTML = `
-        <div class="title">${deal.title}</div>
+        <div class="title">
+  <a href="https://www.cheapshark.com/redirect?dealID=${deal.dealID}" target="_blank" style="color:inherit; text-decoration: none;">
+    ${deal.title}
+  </a>
+</div>
+
         <div class="platform">${deal.store}</div>
         <div class="price">
           <span class="old-price">$${deal.retailPrice.toFixed(2)}</span>
