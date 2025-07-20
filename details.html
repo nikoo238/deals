@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Game Details</title>
   <style>
     body {
@@ -37,6 +38,23 @@
       margin-top: 5px;
       font-size: 1em;
       color: #00e676;
+    }
+
+    /* Mobil uyumluluk */
+    @media (max-width: 600px) {
+      .game-card {
+        padding: 15px;
+        font-size: 0.95rem;
+      }
+      h2 {
+        font-size: 1.3rem;
+      }
+      .price {
+        font-size: 1rem;
+      }
+      .discount {
+        font-size: 0.95rem;
+      }
     }
   </style>
 </head>
