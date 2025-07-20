@@ -2,91 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Game Deals</title>
+  <title>Game List</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #1e1e1e;
-      color: #f0f0f0;
-      margin: 0;
-      padding: 0;
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      padding: 20px;
     }
-    header {
+    h1 {
       text-align: center;
-      padding: 1rem;
-      background-color: #282828;
     }
-    #controls {
+    .game-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 10px;
       justify-content: center;
-      padding: 1rem;
-    }
-    #searchInput, #priceFilter {
-      padding: 0.5rem;
-      border-radius: 6px;
-      border: none;
-      font-size: 1rem;
-    }
-    #games-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-      padding: 1rem;
     }
     .game {
-      background-color: #2a2a2a;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.4);
+      background: #222;
+      padding: 10px 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s;
     }
-    .title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
+    .game:hover {
+      background: #333;
     }
-    .platform {
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-    .price {
-      margin-top: 0.5rem;
-    }
-    .old-price {
-      color: gray;
-      text-decoration: line-through;
-      opacity: 0.5;
-      margin-right: 0.5rem;
-    }
-    .new-price {
-      color: #ff4e4e;
-      font-weight: bold;
+    a {
+      color: white;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>🎮 Game Deals</h1>
-    <p>Find the best price from Steam or Epic Games</p>
-  </header>
+  <h1>🎮 Game List</h1>
+  <div class="game-list" id="gameList"></div>
 
-  <div id="controls">
-    <input type="text" id="searchInput" placeholder="Search game name..." />
-    <input type="number" id="priceFilter" placeholder="Max price ($)" min="0" />
-  </div>
+  <script>
+    const games = [
+      "GTA V", "Rust", "Satisfactory", "Cyberpunk 2077", "The Witcher 3",
+      "Red Dead Redemption 2", "It Takes Two", "Raft", "BeamNG.drive",
+      "No Man's Sky", "The Forest", "Sons of the Forest", "Phasmophobia",
+      "Subnautica", "Stardew Valley", "Fall Guys", "Among Us", "FIFA 24",
+      "Forza Horizon 5", "Batman: Arkham Knight", "Hogwarts Legacy",
+      "Spider-Man Remastered", "God of War", "Star Wars Jedi: Survivor",
+      "Lego Star Wars: The Skywalker Saga"
+    ];
 
-  <main>
-    <section id="games-list">
-      <!-- Game deals will be added here -->
-    </section>
-  </main>
+    const list = document.getElementById("gameList");
 
-  <footer style="text-align:center; padding:1rem; background-color:#282828;">
-    <p>Made with ❤️ by Nikoo</p>
-  </footer>
-
-  <script src="script.js"></script>
+    games.forEach(title => {
+      const link = document.createElement("a");
+      link.href = `details.html?title=${encodeURIComponent(title)}`;
+      link.innerHTML = `<div class="game">${title}</div>`;
+      list.appendChild(link);
+    });
+  </script>
 </body>
 </html>
