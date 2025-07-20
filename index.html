@@ -25,121 +25,81 @@
   <div class="game-list" id="gameList"></div>
 
   <script>
-const games = [
-  "Rust","Satisfactory","Cyberpunk 2077","The Witcher 3","Red Dead Redemption 2",
-  "It Takes Two","Raft","BeamNG.drive","No Man's Sky","The Forest","Sons of the Forest",
-  "Phasmophobia","Subnautica","Stardew Valley","Fall Guys","Among Us","FIFA 24",
-  "Forza Horizon 5","Batman: Arkham Knight","Spider-Man Remastered","God of War",
-  "Star Wars Jedi: Survivor","Lego Star Wars: The Skywalker Saga","Elden Ring","Sekiro",
-  "Hades","Hollow Knight","Terraria","Subnautica: Below Zero","Borderlands 3",
-  "Metro Exodus","DOOM Eternal","Control","Assassin's Creed Valhalla","Far Cry 6",
-  "Call of Duty: Warzone","Valorant","Apex Legends","Fortnite","Destiny 2",
-  "Among Trees","Cuphead","Divinity: Original Sin 2","Dark Souls 3","Monster Hunter World",
-  "The Outer Worlds","Ghostrunner","Watch Dogs Legion","Death Stranding","Slay the Spire",
-  "Celeste","Ori and the Will of the Wisps","Darkest Dungeon","Cities: Skylines",
-  "Noita","Factorio","Hollow Knight: Silksong","Microsoft Flight Simulator",
-  "Overwatch","Dota 2","League of Legends","Counter-Strike: Global Offensive",
-  "Minecraft","Grand Theft Auto IV","The Elder Scrolls V: Skyrim","Fallout 4",
-  "Battlefield V","Rainbow Six Siege","Rocket League","Team Fortress 2",
-  "The Division 2","Halo Infinite","CyberConnect2 Naruto","Diablo III","The Sims 4",
-  "Anno 1800","Blasphemous","Dead Cells","Stellaris","Kerbal Space Program",
-  "The Binding of Isaac","Super Meat Boy","Dead by Daylight","Valheim","Returnal",
-  "Spelunky 2","Cuphead","Among Us","Terraria","Hollow Knight","Starbound",
-  "No Man's Sky","Outer Wilds","Oxenfree","Tetris Effect","Farming Simulator 22",
-  "Portal 2","Half-Life: Alyx","Baldur's Gate 3","Disco Elysium","Dark Souls Remastered",
-  "Monster Hunter Rise","Mortal Kombat 11","Street Fighter V","Dead or Alive 6",
-  "Tekken 7","Fall Guys: Ultimate Knockout","Overcooked! 2","Human: Fall Flat",
-  "Kerbal Space Program 2","Godfall","The Witcher 2","Mass Effect Legendary Edition",
-  "Dragon Age: Inquisition","Sid Meier's Civilization VI","XCOM 2","Total War: Warhammer II",
-  "Gears 5","Sea of Thieves","Watch Dogs 2","Titanfall 2","For Honor","Divinity: Original Sin",
-  "Cuphead","Hotline Miami","Firewatch","Inside","Limbo","Hollow Knight","Ori and the Blind Forest",
-  "Metro 2033 Redux","The Talos Principle","The Outer Worlds","Borderlands 2","Bioshock Infinite",
-  "Dishonored 2","Prey","Deus Ex: Mankind Divided","Dark Souls II","Bloodborne",
-  "Sekiro: Shadows Die Twice","Monster Hunter: World","Doom (2016)","Resident Evil 2 Remake",
-  "Resident Evil 3 Remake","The Last of Us Part II","God of War (2018)","Spider-Man: Miles Morales",
-  "Ghost of Tsushima","Deathloop","Horizon Zero Dawn","Control Ultimate Edition",
-  "Nier: Automata","Final Fantasy VII Remake","Persona 5 Royal","Dark Souls Remastered",
-  "Divinity: Original Sin 2 - Definitive Edition","Cyberpunk 2077","Dying Light","The Forest",
-  "Subnautica","Valheim","Rust","ARK: Survival Evolved","DayZ","The Long Dark",
-  "Project Zomboid","7 Days to Die","Don't Starve Together","Terraria","Starbound",
-  "Minecraft Dungeons","Stardew Valley","Slay the Spire","FTL: Faster Than Light",
-  "Darkest Dungeon","XCOM: Enemy Unknown","XCOM 2","Sid Meier's Civilization V","Europa Universalis IV",
-  "Hearts of Iron IV","Crusader Kings III","Total War: Three Kingdoms","Total War: Warhammer",
-  "Age of Empires II Definitive Edition","StarCraft II","Warframe","Path of Exile",
-  "World of Warcraft","Final Fantasy XIV","Guild Wars 2","Black Desert Online",
-  "The Elder Scrolls Online","League of Legends","Dota 2","Overwatch","Valorant",
-  "Counter-Strike: Global Offensive","Team Fortress 2","Rainbow Six Siege","Paladins",
-  "Hearthstone","Magic: The Gathering Arena","Yu-Gi-Oh! Master Duel","Genshin Impact",
-  "Apex Legends","Fortnite","Call of Duty: Modern Warfare","Battlefield 1","Battlefield V",
-  "PlayerUnknown's Battlegrounds","Destiny 2","Rocket League","Fall Guys: Ultimate Knockout",
-  "Among Us","Phasmophobia","Dead by Daylight","Friday the 13th: The Game",
-  "Left 4 Dead 2","Warhammer: Vermintide 2","Teamfight Tactics","Minecraft","Roblox",
-  "Fortnite","Stray","Hogwarts Legacy","Cuphead","Hades","Dark Souls 3","Sekiro",
-  "Dead Cells","Ori and the Will of the Wisps","Stardew Valley","Terraria","Among Us",
-  "Cyberpunk 2077","Valheim","Rust","Satisfactory","It Takes Two","Raft","BeamNG.drive",
-  "No Man's Sky","The Forest","Sons of the Forest","Phasmophobia","Subnautica","Stardew Valley",
-  "Fall Guys","FIFA 24","Forza Horizon 5","Batman: Arkham Knight","Spider-Man Remastered",
-  "God of War","Star Wars Jedi: Survivor","Lego Star Wars: The Skywalker Saga","Elden Ring",
-  "Sekiro","Hades","Hollow Knight","Terraria","Subnautica: Below Zero","Borderlands 3",
-  "Metro Exodus","DOOM Eternal","Control","Assassin's Creed Valhalla","Far Cry 6",
-  "Call of Duty: Warzone","Valorant","Apex Legends","Fortnite","Destiny 2","Among Trees",
-  "Cuphead","Divinity: Original Sin 2","Dark Souls 3","Monster Hunter World","The Outer Worlds",
-  "Ghostrunner","Watch Dogs Legion","Death Stranding","Slay the Spire","Celeste",
-  "Ori and the Will of the Wisps","Darkest Dungeon","Cities: Skylines","Noita",
-  "Factorio","Hollow Knight: Silksong","Microsoft Flight Simulator","Overwatch","Dota 2",
-  "League of Legends","Counter-Strike: Global Offensive","Minecraft","Grand Theft Auto IV",
-  "The Elder Scrolls V: Skyrim","Fallout 4","Battlefield V","Rainbow Six Siege",
-  "Rocket League","Team Fortress 2","The Division 2","Halo Infinite","CyberConnect2 Naruto",
-  "Diablo III","The Sims 4","Anno 1800","Blasphemous","Dead Cells","Stellaris",
-  "Kerbal Space Program","The Binding of Isaac","Super Meat Boy","Dead by Daylight",
-  "Valheim","Returnal","Spelunky 2","Cuphead","Among Us","Terraria","Hollow Knight",
-  "Starbound","No Man's Sky","Outer Wilds","Oxenfree","Tetris Effect","Farming Simulator 22",
-  "Portal 2","Half-Life: Alyx","Baldur's Gate 3","Disco Elysium","Dark Souls Remastered",
-  "Monster Hunter Rise","Mortal Kombat 11","Street Fighter V","Dead or Alive 6",
-  "Tekken 7","Fall Guys: Ultimate Knockout","Overcooked! 2","Human: Fall Flat",
-  "Kerbal Space Program 2","Godfall","The Witcher 2","Mass Effect Legendary Edition",
-  "Dragon Age: Inquisition","Sid Meier's Civilization VI","XCOM 2","Total War: Warhammer II",
-  "Gears 5","Sea of Thieves","Watch Dogs 2","Titanfall 2","For Honor","Divinity: Original Sin",
-  "Cuphead","Hotline Miami","Firewatch","Inside","Limbo","Hollow Knight","Ori and the Blind Forest",
-  "Metro 2033 Redux","The Talos Principle","The Outer Worlds","Borderlands 2","Bioshock Infinite",
-  "Dishonored 2","Prey","Deus Ex: Mankind Divided","Dark Souls II","Bloodborne",
-  "Sekiro: Shadows Die Twice","Monster Hunter: World","Doom (2016)","Resident Evil 2 Remake",
-  "Resident Evil 3 Remake","The Last of Us Part II","God of War (2018)","Spider-Man: Miles Morales",
-  "Ghost of Tsushima","Deathloop","Horizon Zero Dawn","Control Ultimate Edition",
-  "Nier: Automata","Final Fantasy VII Remake","Persona 5 Royal","Dark Souls Remastered",
-  "Divinity: Original Sin 2 - Definitive Edition","Cyberpunk 2077","Dying Light",
-  "The Forest","Subnautica","Valheim","Rust","ARK: Survival Evolved","DayZ",
-  "The Long Dark","Project Zomboid","7 Days to Die","Don't Starve Together","Terraria",
-  "Starbound","Minecraft Dungeons","Stardew Valley","Slay the Spire","FTL: Faster Than Light",
-  "Darkest Dungeon","XCOM: Enemy Unknown","XCOM 2","Sid Meier's Civilization V","Europa Universalis IV",
-  "Hearts of Iron IV","Crusader Kings III","Total War: Three Kingdoms","Total War: Warhammer",
-  "Age of Empires II Definitive Edition","StarCraft II","Warframe","Path of Exile",
-  "World of Warcraft","Final Fantasy XIV","Guild Wars 2","Black Desert Online",
-  "The Elder Scrolls Online","League of Legends","Dota 2","Overwatch","Valorant",
-  "Counter-Strike: Global Offensive","Team Fortress 2","Rainbow Six Siege","Paladins",
-  "Hearthstone","Magic: The Gathering Arena","Yu-Gi-Oh! Master Duel","Genshin Impact",
-  "Apex Legends","Fortnite","Call of Duty: Modern Warfare","Battlefield 1","Battlefield V",
-  "PlayerUnknown's Battlegrounds","Destiny 2","Rocket League","Fall Guys: Ultimate Knockout",
-  "Among Us","Phasmophobia","Dead by Daylight","Friday the 13th: The Game",
-  "Left 4 Dead 2","Warhammer: Vermintide 2","Teamfight Tactics","Minecraft","Roblox",
-  "Fortnite","Stray","Hogwarts Legacy","Cuphead","Hades","Dark Souls 3","Sekiro",
-  "Dead Cells","Ori and the Will of the Wisps","Stardew Valley","Terraria","Among Us",
-  "Cyberpunk 2077","Valheim","Rust","Satisfactory","It Takes Two","Raft","BeamNG.drive",
-  "No Man's Sky","The Forest","Sons of the Forest","Phasmophobia","Subnautica","Stardew Valley",
-  "Fall Guys","FIFA 24","Forza Horizon 5","Batman: Arkham Knight","Spider-Man Remastered",
-  "God of War","Star Wars Jedi: Survivor","Lego Star Wars: The Skywalker Saga"
-];
-
+    const games = [
+      "Rust","Satisfactory","Cyberpunk 2077","The Witcher 3","Red Dead Redemption 2",
+      "It Takes Two","Raft","BeamNG.drive","No Man's Sky","The Forest","Sons of the Forest",
+      "Phasmophobia","Subnautica","Stardew Valley","Fall Guys","Among Us","FIFA 24",
+      "Forza Horizon 5","Batman: Arkham Knight","Spider-Man Remastered","God of War",
+      "Star Wars Jedi: Survivor","Lego Star Wars: The Skywalker Saga","Elden Ring","Sekiro",
+      "Hades","Hollow Knight","Terraria","Subnautica: Below Zero","Borderlands 3",
+      "Metro Exodus","DOOM Eternal","Control","Assassin's Creed Valhalla","Far Cry 6",
+      "Call of Duty: Warzone","Valorant","Apex Legends","Fortnite","Destiny 2",
+      "Among Trees","Cuphead","Divinity: Original Sin 2","Dark Souls 3","Monster Hunter World",
+      "The Outer Worlds","Ghostrunner","Watch Dogs Legion","Death Stranding","Slay the Spire",
+      "Celeste","Ori and the Will of the Wisps","Darkest Dungeon","Cities: Skylines",
+      "Noita","Factorio","Hollow Knight: Silksong","Microsoft Flight Simulator",
+      "Overwatch","Dota 2","League of Legends","Counter-Strike: Global Offensive",
+      "Minecraft","Grand Theft Auto IV","The Elder Scrolls V: Skyrim","Fallout 4",
+      "Battlefield V","Rainbow Six Siege","Rocket League","Team Fortress 2",
+      "The Division 2","Halo Infinite","CyberConnect2 Naruto","Diablo III","The Sims 4",
+      "Anno 1800","Blasphemous","Dead Cells","Stellaris","Kerbal Space Program",
+      "The Binding of Isaac","Super Meat Boy","Dead by Daylight","Valheim","Returnal",
+      "Spelunky 2","Cuphead","Among Us","Terraria","Hollow Knight","Starbound",
+      "No Man's Sky","Outer Wilds","Oxenfree","Tetris Effect","Farming Simulator 22",
+      "Portal 2","Half-Life: Alyx","Baldur's Gate 3","Disco Elysium","Dark Souls Remastered",
+      "Monster Hunter Rise","Mortal Kombat 11","Street Fighter V","Dead or Alive 6",
+      "Tekken 7","Fall Guys: Ultimate Knockout","Overcooked! 2","Human: Fall Flat",
+      "Kerbal Space Program 2","Godfall","The Witcher 2","Mass Effect Legendary Edition",
+      "Dragon Age: Inquisition","Sid Meier's Civilization VI","XCOM 2","Total War: Warhammer II",
+      "Gears 5","Sea of Thieves","Watch Dogs 2","Titanfall 2","For Honor","Divinity: Original Sin",
+      "Cuphead","Hotline Miami","Firewatch","Inside","Limbo","Hollow Knight","Ori and the Blind Forest",
+      "Metro 2033 Redux","The Talos Principle","The Outer Worlds","Borderlands 2","Bioshock Infinite",
+      "Dishonored 2","Prey","Deus Ex: Mankind Divided","Dark Souls II","Bloodborne",
+      "Sekiro: Shadows Die Twice","Monster Hunter: World","Doom (2016)","Resident Evil 2 Remake",
+      "Resident Evil 3 Remake","The Last of Us Part II","God of War (2018)","Spider-Man: Miles Morales",
+      "Ghost of Tsushima","Deathloop","Horizon Zero Dawn","Control Ultimate Edition",
+      "Nier: Automata","Final Fantasy VII Remake","Persona 5 Royal","Dark Souls Remastered",
+      "Divinity: Original Sin 2 - Definitive Edition","Cyberpunk 2077","Dying Light","The Forest",
+      "Subnautica","Valheim","Rust","ARK: Survival Evolved","DayZ","The Long Dark",
+      "Project Zomboid","7 Days to Die","Don't Starve Together","Terraria","Starbound",
+      "Minecraft Dungeons","Stardew Valley","Slay the Spire","FTL: Faster Than Light",
+      "Darkest Dungeon","XCOM: Enemy Unknown","XCOM 2","Sid Meier's Civilization V","Europa Universalis IV",
+      "Hearts of Iron IV","Crusader Kings III","Total War: Three Kingdoms","Total War: Warhammer",
+      "Age of Empires II Definitive Edition","StarCraft II","Warframe","Path of Exile",
+      "World of Warcraft","Final Fantasy XIV","Guild Wars 2","Black Desert Online",
+      "The Elder Scrolls Online","League of Legends","Dota 2","Overwatch","Valorant",
+      "Counter-Strike: Global Offensive","Team Fortress 2","Rainbow Six Siege","Paladins",
+      "Hearthstone","Magic: The Gathering Arena","Yu-Gi-Oh! Master Duel","Genshin Impact",
+      "Apex Legends","Fortnite","Call of Duty: Modern Warfare","Battlefield 1","Battlefield V",
+      "PlayerUnknown's Battlegrounds","Destiny 2","Rocket League","Fall Guys: Ultimate Knockout",
+      "Among Us","Phasmophobia","Dead by Daylight","Friday the 13th: The Game",
+      "Left 4 Dead 2","Warhammer: Vermintide 2","Teamfight Tactics","Minecraft","Roblox",
+      "Fortnite","Stray","Hogwarts Legacy","Cuphead","Hades","Dark Souls 3","Sekiro",
+      "Dead Cells","Ori and the Will of the Wisps","Stardew Valley","Terraria","Among Us",
+      "Cyberpunk 2077","Valheim","Rust","Satisfactory","It Takes Two","Raft","BeamNG.drive",
+      "No Man's Sky","The Forest","Sons of the Forest","Phasmophobia","Subnautica","Stardew Valley",
+      "Fall Guys","FIFA 24","Forza Horizon 5","Batman: Arkham Knight","Spider-Man Remastered",
+      "God of War","Star Wars Jedi: Survivor","Lego Star Wars: The Skywalker Saga"
+    ];
 
     const gameList = document.getElementById("gameList");
     let showingFavs = false;
 
-    const favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+    let favorites = JSON.parse(localStorage.getItem("favorites") || "[]");
+
+    function saveFavorites() {
+      // Favorileri localStorage'a kaydet
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+    }
 
     function renderList() {
       gameList.innerHTML = "";
       const arr = showingFavs ? games.filter(g => favorites.includes(g)) : games;
-      arr.forEach(title => {
+
+      // Tekrar eden oyunları engellemek için Set kullanıyoruz
+      const uniqueArr = [...new Set(arr)];
+
+      uniqueArr.forEach(title => {
         const wrapper = document.createElement("div");
         wrapper.className = "game";
 
@@ -151,11 +111,13 @@ const games = [
         favBtn.innerText = favorites.includes(title) ? "★" : "☆";
         favBtn.onclick = e => {
           e.preventDefault();
-          const idx = favorites.indexOf(title);
-          if (idx >= 0) favorites.splice(idx, 1);
-          else favorites.push(title);
-          localStorage.setItem("favorites", JSON.stringify(favorites));
-          favBtn.innerText = favorites.includes(title) ? "★" : "☆";
+          if (favorites.includes(title)) {
+            favorites = favorites.filter(f => f !== title);
+          } else {
+            favorites.push(title);
+          }
+          saveFavorites();
+          renderList();
         };
 
         wrapper.appendChild(link);
